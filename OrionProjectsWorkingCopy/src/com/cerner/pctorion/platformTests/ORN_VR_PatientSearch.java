@@ -117,8 +117,7 @@ public class ORN_VR_PatientSearch extends Settings {
 			validateName(nameFound,searchType,searchstring,expectedFullName,imageName,test);
 					  
 		//Step 6 -- Select last patient searched for - validate encounter using name in demographics bar 	   
-			//ps.selectPatient(expectedFullName, test);
-			utilitymethods.enterDataInAnyField(ps.PatientSearchTextBox, expectedFullName, test);
+			ps.selectPatient(expectedFullName, test);
 			String demoName = ev.getDemoBarName(test);
 			try {	
 				Assert.assertEquals(demoName,expectedFullName) ;
