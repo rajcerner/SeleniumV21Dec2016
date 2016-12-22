@@ -28,17 +28,17 @@ public class UtilityMethods extends Settings
 	 * #author: rv042687 
 	 * #parameter-1 : actual : actual text/string
 	 * #parameter-2 : expected: expected text/string
-	 * #parameter-3 : stepNameDesc: step no / description
+	 * 
 	 * */
-	public void verify(String actual, String expected, String stepDesc)
+	public void verify(String actual, String expected, ExtentTest exTest)
 	{
 		try{
 			Assert.assertEquals(actual, expected);
-			test.log(LogStatus.PASS, expected + " Found");
+			exTest.log(LogStatus.PASS, expected + " Found");
 
 		}catch(AssertionError e)
 		{	
-			test.log(LogStatus.FAIL, actual + " Not Found");		
+			exTest.log(LogStatus.FAIL, actual + " Not Found");		
 		}
 
 	}
@@ -49,16 +49,16 @@ public class UtilityMethods extends Settings
 	 * #parameter-2 : 
 	 * #parameter-3 : 
 	 * */
-	public void verifyWithScreen(String actual, String expected, String testName, String imageName)
+	public void verifyWithScreen(String actual, String expected, String testName, String imageName, ExtentTest exTest)
 	{
 		try{
-			Assert.assertEquals(actual, expected);
 			UtilityMethods.captureScreenshot(driver, testName, imageName, browser);
-			test.log(LogStatus.PASS, test.addScreenCapture(imageName+".png") , expected + " Found");
+			Assert.assertEquals(actual, expected);
+			exTest.log(LogStatus.PASS, test.addScreenCapture(imageName+".png") , expected + " Found");
 
 		}catch(AssertionError e)
 		{
-			test.log(LogStatus.FAIL, test.addScreenCapture(imageName+".png"), actual + " Not Found");
+			exTest.log(LogStatus.FAIL, test.addScreenCapture(imageName+".png"), actual + " Not Found");
 		}
 
 
@@ -70,16 +70,16 @@ public class UtilityMethods extends Settings
 	 * #parameter-2 : 
 	 * #parameter-3 : 
 	 * */
-	public void verifyWithScreen(Boolean status, String stepDesc, String testName, String imageName)
+	public void verifyWithScreen(Boolean status, String stepDesc, String testName, String imageName, ExtentTest exTest)
 	{
 		try{
-			Assert.assertTrue(status);
 			UtilityMethods.captureScreenshot(driver, testName, imageName, browser);
-			test.log(LogStatus.PASS, test.addScreenCapture(imageName+".png") , stepDesc + " Found");
+			Assert.assertTrue(status);
+			exTest.log(LogStatus.PASS, test.addScreenCapture(imageName+".png") , stepDesc + " Found");
 
 		}catch(AssertionError e)
 		{	
-			test.log(LogStatus.FAIL, test.addScreenCapture(imageName+".png"), stepDesc + " Not Found");	
+			exTest.log(LogStatus.FAIL, test.addScreenCapture(imageName+".png"), stepDesc + " Not Found");	
 		}	
 
 	}
@@ -90,22 +90,18 @@ public class UtilityMethods extends Settings
 	 * #parameter-2 : 
 	 * #parameter-3 : 
 	 * */
-	public void verify(Boolean status, String stepDesc)
+	public void verify(Boolean status, String stepDesc, ExtentTest exTest)
 	{
 		try{
 			Assert.assertTrue(status);
-			test.log(LogStatus.PASS, stepDesc);
+			exTest.log(LogStatus.PASS, stepDesc);
 
 		}catch(AssertionError e)
 		{	
-			test.log(LogStatus.FAIL, stepDesc);		
+			exTest.log(LogStatus.FAIL, stepDesc);		
 		}	
 
 	}
-
-
-
-
 
 	public static Boolean verticalScrollBarExist(WebDriver driver) throws InterruptedException //Verifies as vertical scroll bar exist if you have a long list to scroll through.
 	{

@@ -32,7 +32,7 @@ public class ORN_VR_PatientSearch extends Settings {
 		LoginPage lgp = PageFactory.initElements(driver, LoginPage.class);     
 		PatientSearchPage ps  = PageFactory.initElements(driver, PatientSearchPage.class); 
 		EncounterViewPage ev  = PageFactory.initElements(driver, EncounterViewPage.class);
-		UtilityMethods utilitymethods=new UtilityMethods();
+		UtilityMethods utilitymethods = new UtilityMethods();
 	
 
 	  //Input xlxs file and choose worksheet and test to use for variable data
@@ -63,12 +63,13 @@ public class ORN_VR_PatientSearch extends Settings {
 		
 	   //Step 2 -- Testing X button
 		  	String searchstring = "abc123";
-		  	//ps.enterPatientsearchString(searchstring, test);
+		  	//ps.enterPatientsearchString(searchstring, test); , ps.patientSearchText().contains(searchstring)
 		  	utilitymethods.enterDataInAnyField(ps.PatientSearchTextBox, searchstring, test);
 		  	//ps.clickXButton(test);
 		  	System.out.println("asdf");
 		  	utilitymethods.clickOnAnyButton(ps.XButton,test);
-
+		  	
+		  	
 			if(ps.patientSearchText().contains(searchstring)) {
 				test.log(LogStatus.FAIL, "X button not clearing search as expect") ;
 			}
@@ -119,6 +120,9 @@ public class ORN_VR_PatientSearch extends Settings {
 		//Step 6 -- Select last patient searched for - validate encounter using name in demographics bar 	   
 			ps.selectPatient(expectedFullName, test);
 			String demoName = ev.getDemoBarName(test);
+
+			
+			
 			try {	
 				Assert.assertEquals(demoName,expectedFullName) ;
 				test.log(LogStatus.PASS, demoName + " was found in encounter view demographics bar");
@@ -136,6 +140,8 @@ public class ORN_VR_PatientSearch extends Settings {
 			String expectedEncounter = datatable.getValue("ExpectedEncounterFIN3");
 			
 			Boolean encounterFound = ev.findEncounter(expectedEncounter);
+			
+			
 			if(encounterFound != true) {
 				test.log(LogStatus.FAIL, "Encounter " + expectedEncounter + " not found for patient " + expectedFullName + test.addScreenCapture(imageName+".png"));
 			}
@@ -154,6 +160,10 @@ public class ORN_VR_PatientSearch extends Settings {
 			utilitymethods.enterDataInAnyField(ps.PatientSearchTextBox, searchstring, test);
 			UtilityMethods.captureScreenshot(driver, testName, imageName,  browser);
 			Boolean vertScrollBarExist = UtilityMethods.verticalScrollBarExist(driver);
+			
+
+			
+			
 			if(vertScrollBarExist != true) {
 				test.log(LogStatus.FAIL, "No vertical scroll bar with searchstring of " + searchstring + test.addScreenCapture(imageName+".png")) ;		
 			}
