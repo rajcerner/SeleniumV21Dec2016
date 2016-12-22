@@ -15,6 +15,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -22,6 +23,89 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class UtilityMethods extends Settings 
 {
+
+	/*
+	 * #author: rv042687 
+	 * #parameter-1 : actual : actual text/string
+	 * #parameter-2 : expected: expected text/string
+	 * #parameter-3 : stepNameDesc: step no / description
+	 * */
+	public void verify(String actual, String expected, String stepDesc)
+	{
+		try{
+			Assert.assertEquals(actual, expected);
+			test.log(LogStatus.PASS, expected + " Found");
+
+		}catch(AssertionError e)
+		{	
+			test.log(LogStatus.FAIL, actual + " Not Found");		
+		}
+
+	}
+
+	/*
+	 * #author: rv042687 
+	 * #parameter-1 : 
+	 * #parameter-2 : 
+	 * #parameter-3 : 
+	 * */
+	public void verifyWithScreen(String actual, String expected, String testName, String imageName)
+	{
+		try{
+			Assert.assertEquals(actual, expected);
+			UtilityMethods.captureScreenshot(driver, testName, imageName, browser);
+			test.log(LogStatus.PASS, test.addScreenCapture(imageName+".png") , expected + " Found");
+
+		}catch(AssertionError e)
+		{
+			test.log(LogStatus.FAIL, test.addScreenCapture(imageName+".png"), actual + " Not Found");
+		}
+
+
+	}
+
+	/*
+	 * #author: rv042687 
+	 * #parameter-1 : 
+	 * #parameter-2 : 
+	 * #parameter-3 : 
+	 * */
+	public void verifyWithScreen(Boolean status, String stepDesc, String testName, String imageName)
+	{
+		try{
+			Assert.assertTrue(status);
+			UtilityMethods.captureScreenshot(driver, testName, imageName, browser);
+			test.log(LogStatus.PASS, test.addScreenCapture(imageName+".png") , stepDesc + " Found");
+
+		}catch(AssertionError e)
+		{	
+			test.log(LogStatus.FAIL, test.addScreenCapture(imageName+".png"), stepDesc + " Not Found");	
+		}	
+
+	}
+
+	/*
+	 * #author: rv042687 
+	 * #parameter-1 : 
+	 * #parameter-2 : 
+	 * #parameter-3 : 
+	 * */
+	public void verify(Boolean status, String stepDesc)
+	{
+		try{
+			Assert.assertTrue(status);
+			test.log(LogStatus.PASS, stepDesc);
+
+		}catch(AssertionError e)
+		{	
+			test.log(LogStatus.FAIL, stepDesc);		
+		}	
+
+	}
+
+
+
+
 
 	public static Boolean verticalScrollBarExist(WebDriver driver) throws InterruptedException //Verifies as vertical scroll bar exist if you have a long list to scroll through.
 	{
@@ -63,6 +147,10 @@ public class UtilityMethods extends Settings
 		return report;
 
 	}
+
+
+
+
 
 
 	/* 
@@ -208,7 +296,7 @@ public class UtilityMethods extends Settings
 	//public void enterDataInAnyField(String Case, WebElement element,String text){
 	public void enterDataInAnyField(WebElement element,String text,ExtentTest test) throws InterruptedException{
 
-		
+
 		/*try{
 			switch(Case){
 			case "id": 
@@ -251,13 +339,13 @@ public class UtilityMethods extends Settings
 			System.out.println(e);
 			// TODO: handle exception
 		}*/
-		
+
 		try{
 			System.out.println("element "+element);
-			
+
 			element.clear();
 			element.sendKeys(text);
-			 Thread.sleep(5000);
+			Thread.sleep(5000);
 		}
 		catch(NoSuchElementException e){
 			test.log(LogStatus.FATAL, "Not able to Enter data in text field");

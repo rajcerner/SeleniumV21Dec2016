@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [PlatformSuite]">
-  <parameter name="component" value="Platform"/>
-  <parameter name="domain" value="Dev"/>
-  <parameter name="browser" value="chrome"/>
-  <test name="FireTest(failed)">
-    <parameter name="browser" value="firefox"/>
+  <test name="Default test(failed)">
     <classes>
       <class name="com.cerner.pctorion.platformTests.ORN_VR_PatientSearch">
         <methods>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="setup"/>
-          <include name="setup"/>
           <include name="VRPatientSearch"/>
         </methods>
       </class> <!-- com.cerner.pctorion.platformTests.ORN_VR_PatientSearch -->
     </classes>
-  </test> <!-- FireTest(failed) -->
+  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [PlatformSuite] -->
