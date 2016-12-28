@@ -26,8 +26,9 @@ public class UtilityMethods extends Settings
 
 	/*
 	 * #author: rv042687 
-	 * #parameter-1 : actual : actual text/string
-	 * #parameter-2 : expected: expected text/string
+	 * #parameter-1: actual : actual text/string
+	 * #parameter-2: expected: expected text/string
+	 * #parameter-3: exTest : for extent report
 	 * 
 	 * */
 	public void verify(String actual, String expected, ExtentTest exTest)
@@ -42,12 +43,34 @@ public class UtilityMethods extends Settings
 		}
 
 	}
+	
+	
+	/*
+	 * #author: rv042687 
+	 * #parameter-1 : status :
+	 * #parameter-2 : stepDesc :
+	 * #parameter-3 : exTest:   for extent report
+	 * */
+	public void verify(Boolean status, String stepDesc, ExtentTest exTest)
+	{
+		try{
+			Assert.assertTrue(status);
+			exTest.log(LogStatus.PASS, stepDesc);
+
+		}catch(AssertionError e)
+		{	
+			exTest.log(LogStatus.FAIL, stepDesc);		
+		}	
+
+	}
 
 	/*
 	 * #author: rv042687 
-	 * #parameter-1 : 
-	 * #parameter-2 : 
-	 * #parameter-3 : 
+	 * #parameter-1 : actual
+	 * #parameter-2 : expected
+	 * #parameter-3 : testName
+	 * #parameter-4 : imageName
+	 * #parameter-5 : exTest :  for extent report
 	 * */
 	public void verifyWithScreen(String actual, String expected, String testName, String imageName, ExtentTest exTest)
 	{
@@ -66,9 +89,11 @@ public class UtilityMethods extends Settings
 
 	/*
 	 * #author: rv042687 
-	 * #parameter-1 : 
-	 * #parameter-2 : 
-	 * #parameter-3 : 
+	 * #parameter-1 : status
+	 * #parameter-2 : stepDesc
+	 * #parameter-3 : testName
+	 * #parameter-4 : imageName
+	 * #parameter-5 : exTest :  for extent report
 	 * */
 	public void verifyWithScreen(Boolean status, String stepDesc, String testName, String imageName, ExtentTest exTest)
 	{
@@ -84,24 +109,7 @@ public class UtilityMethods extends Settings
 
 	}
 
-	/*
-	 * #author: rv042687 
-	 * #parameter-1 : 
-	 * #parameter-2 : 
-	 * #parameter-3 : 
-	 * */
-	public void verify(Boolean status, String stepDesc, ExtentTest exTest)
-	{
-		try{
-			Assert.assertTrue(status);
-			exTest.log(LogStatus.PASS, stepDesc);
 
-		}catch(AssertionError e)
-		{	
-			exTest.log(LogStatus.FAIL, stepDesc);		
-		}	
-
-	}
 
 	public static Boolean verticalScrollBarExist(WebDriver driver) throws InterruptedException //Verifies as vertical scroll bar exist if you have a long list to scroll through.
 	{
@@ -180,7 +188,7 @@ public class UtilityMethods extends Settings
 	 * @author jk048034
 	 */
 	//public void clickOnAnyButton(String Case, WebElement element,String byValue){
-	public void clickOnAnyButton(WebElement element,ExtentTest test){
+	public void clickButton(WebElement element,ExtentTest test){
 
 		/*try{
 			switch(Case){
@@ -290,7 +298,7 @@ public class UtilityMethods extends Settings
 	 * @throws InterruptedException 
 	 */
 	//public void enterDataInAnyField(String Case, WebElement element,String text){
-	public void enterDataInAnyField(WebElement element,String text,ExtentTest test) throws InterruptedException{
+	public void enterText(WebElement element,String text,ExtentTest test) throws InterruptedException{
 
 
 		/*try{

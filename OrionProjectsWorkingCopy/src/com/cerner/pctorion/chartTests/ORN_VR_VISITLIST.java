@@ -1,11 +1,6 @@
 package com.cerner.pctorion.chartTests;
 
 
-import java.util.Set;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
@@ -17,15 +12,61 @@ import com.cerner.pctorion.platform.EncounterViewPage;
 import com.cerner.pctorion.platform.LandingPage;
 import com.cerner.pctorion.platform.LoginPage;
 import com.cerner.pctorion.platform.PatientSearchPage;
+import com.cerner.pctorion.utility.DataTable;
+import com.cerner.pctorion.utility.Settings;
 import com.cerner.pctorion.utility.UtilityMethods;
 import com.relevantcodes.extentreports.ExtentTest;
 
 
-public class ORN_VR_VISITLIST{
+public class ORN_VR_VISITLIST extends Settings{
 
 
-
-
+	@Test
+	public void ornVrVisitList() throws InterruptedException
+	{
+		LandingPage lndPage = PageFactory.initElements(driver, LandingPage.class); 
+		LoginPage logPage = PageFactory.initElements(driver, LoginPage.class);     
+		PatientSearchPage patSrch  = PageFactory.initElements(driver, PatientSearchPage.class); 
+		EncounterViewPage encSelc  = PageFactory.initElements(driver, EncounterViewPage.class);
+		UtilityMethods  utm = new UtilityMethods();
+		
+		
+		String testName = "ORN_VR_VISITLIST";
+		String sheet = "chart";
+		DataTable dataTable = new DataTable(testName, sheet);
+		
+		String baseUrl = dataTable.getValue("URL");
+	  	String username = dataTable.getValue("Username");
+	  	String password = dataTable.getValue("Password");
+		String systemDate= UtilityMethods.systemDate();
+		String patName = dataTable.getValue("Patient-A");
+		
+		report = UtilityMethods.Instance(testName,browser) ;
+		ExtentTest test = report.startTest(testName);
+	    String imageName = ""; //For Screenshots
+	    
+	    
+	  	driver.get(baseUrl);
+	  	
+	  	
+	  	utm.clickButton(lndPage.Login,test);
+	  	logPage.enterUsernamePassword(username, password);
+	  	utm.clickButton(logPage.Login,test);  	
+	  	utm.enterText(patSrch.PatientSearchTextBox, "DODDS, BRAIN", test);
+	  	patSrch.selectPatient("DODDS, BRAIN", test);
+	  	
+	  	
+	  	encSelc.selectEncounter("1234567", test);
+	  	
+		
+		
+	}
+	
+	
+	
+	
+	
+	/*
 	@Test
 	public void test() throws InterruptedException
 	{
@@ -49,7 +90,7 @@ public class ORN_VR_VISITLIST{
 		PatientSearchPage ps  = PageFactory.initElements(driver, PatientSearchPage.class); 
 		EncounterViewPage ev  = PageFactory.initElements(driver, EncounterViewPage.class);
 		UtilityMethods utilitymethods = new UtilityMethods();
-		VisitListReviewPage obj = PageFactory.initElements(driver,VisitListReviewPage.class );
+		VisitListReviewPage vr = PageFactory.initElements(driver,VisitListReviewPage.class );
 		VisitListDetailsPage vd = PageFactory.initElements(driver,VisitListDetailsPage.class);
 
 
@@ -61,12 +102,18 @@ public class ORN_VR_VISITLIST{
 		ps.selectPatient("DODDS, BRIAN", test);
 		ev.selectEncounter("1234567", test);
 		//obj.selectFuture(Encounter.ONE);
-		obj.selectPrevious(Encounter.THREE);
+	//	vr.selectPrevious(Encounter.THREE);
+		Boolean status = vr.verifyPrevEncRows("Recurring");
+		utilitymethods.verify(false, "data", test);
+		utilitymethods.verify(status, "data", test);
+		
+		
+		//System.out.println("value = " + status);
 			
 		//driver.close();
-		//driver.quit();
+		driver.quit();
 	}
-
+*/
 
 
 }

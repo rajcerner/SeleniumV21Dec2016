@@ -69,7 +69,36 @@ public class VisitListReviewPage {
 		case THREE:	 futRowBtn.get(2).click();   break; // Encounter 3
 		}
 
+	}	
+	
+	//method to verify previous encounters data in row
+	//@param:encData = actual data
+	Boolean status = null;
+	public Boolean verifyPrevEncRows(String rowData)
+	{		
+		for(WebElement prevRowData : prevRowBtn)
+		{
+			if(prevRowData.getText().equals(rowData));
+			status = true;		
+		}
+		return status;
 	}
+	
+	//method to verify previous encounters data in row
+	//@param:encData = actual data
+	public Boolean verifyFutEncRows(String rowData)
+	{
+		
+		for(WebElement futRowData : futRowBtn)
+		{
+			if(futRowData.getText().equals(rowData));
+			 status =   true;
+		}
+		return status;
+	}
+	
+	
+	
 
 
 }

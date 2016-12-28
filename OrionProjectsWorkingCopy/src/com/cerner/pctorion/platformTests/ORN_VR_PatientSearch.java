@@ -55,19 +55,19 @@ public class ORN_VR_PatientSearch extends Settings {
 		  //Open Test Harness (Patient Search) 
 		  	driver.get(baseUrl);	
 			//lnp.clickLoginButton();
-			utilitymethods.clickOnAnyButton(lnp.Login,test);
+			utilitymethods.clickButton(lnp.Login,test);
 		  	lgp.enterUsernamePassword(username, password);
 		  	//lgp.clickLoginButton();	
-		  	utilitymethods.clickOnAnyButton(lgp.Login,test);
+		  	utilitymethods.clickButton(lgp.Login,test);
 
 		
 	   //Step 2 -- Testing X button
 		  	String searchstring = "abc123";
 		  	//ps.enterPatientsearchString(searchstring, test); , ps.patientSearchText().contains(searchstring)
-		  	utilitymethods.enterDataInAnyField(ps.PatientSearchTextBox, searchstring, test);
+		  	utilitymethods.enterText(ps.PatientSearchTextBox, searchstring, test);
 		  	//ps.clickXButton(test);
 		  	System.out.println("asdf");
-		  	utilitymethods.clickOnAnyButton(ps.XButton,test);
+		  	utilitymethods.clickButton(ps.XButton,test);
 		  	
 		  	
 			if(ps.patientSearchText().contains(searchstring)) {
@@ -84,7 +84,7 @@ public class ORN_VR_PatientSearch extends Settings {
 			String expectedFullName = datatable.getValue("ExpectedFullName1");
 			
 			//ps.enterPatientsearchString(searchstring, test);
-			utilitymethods.enterDataInAnyField(ps.PatientSearchTextBox, searchstring, test);
+			utilitymethods.enterText(ps.PatientSearchTextBox, searchstring, test);
 			imageName = "SearchResultbyName";
 			UtilityMethods.captureScreenshot(driver, testName, imageName, browser);
 		
@@ -97,7 +97,7 @@ public class ORN_VR_PatientSearch extends Settings {
 			expectedFullName = datatable.getValue("ExpectedFullName2");
 			
 			//ps.enterPatientsearchString(searchstring, test);
-			utilitymethods.enterDataInAnyField(ps.PatientSearchTextBox, searchstring, test);
+			utilitymethods.enterText(ps.PatientSearchTextBox, searchstring, test);
 			imageName = "SearchResultbyFIN";
 			UtilityMethods.captureScreenshot(driver, testName, imageName, browser);
 		
@@ -110,7 +110,7 @@ public class ORN_VR_PatientSearch extends Settings {
 			expectedFullName = datatable.getValue("ExpectedFullName3");
 			
 			//ps.enterPatientsearchString(searchstring, test);
-			utilitymethods.enterDataInAnyField(ps.PatientSearchTextBox, searchstring, test);
+			utilitymethods.enterText(ps.PatientSearchTextBox, searchstring, test);
 			imageName = "SearchResultbyMRN";
 			UtilityMethods.captureScreenshot(driver, testName, imageName, browser);
 		
@@ -157,7 +157,7 @@ public class ORN_VR_PatientSearch extends Settings {
 		  	searchstring = "Smith";
 			imageName = "ScrollBar";
 			//ps.enterPatientsearchString(searchstring,test);
-			utilitymethods.enterDataInAnyField(ps.PatientSearchTextBox, searchstring, test);
+			utilitymethods.enterText(ps.PatientSearchTextBox, searchstring, test);
 			UtilityMethods.captureScreenshot(driver, testName, imageName,  browser);
 			Boolean vertScrollBarExist = UtilityMethods.verticalScrollBarExist(driver);
 			

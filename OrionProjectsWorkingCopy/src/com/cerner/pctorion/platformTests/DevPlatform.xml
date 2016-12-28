@@ -11,7 +11,7 @@
     </classes>
   </test>
   
-    <test name="ChromeTest">
+  <test name="ChromeTest">
   <parameter name="browser" value="chrome" />
     <classes>
       <class name="com.cerner.pctorion.platformTests.ORN_VR_PatientSearch"/>
