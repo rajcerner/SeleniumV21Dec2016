@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Suite">
+	<parameter name="component" value="Platform" />
+	<parameter name="domain" value="Dev" />
+
+	<test name="Orn_Vr_VisitList">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.cerner.pctorion.chartTests.ORN_VR_VISITLIST" />
+		</classes>
+	</test> <!-- Orn_Vr_VisitList -->
+</suite> <!-- Suite -->

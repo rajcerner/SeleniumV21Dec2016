@@ -28,18 +28,17 @@ public class UtilityMethods extends Settings
 	 * #author: rv042687 
 	 * #parameter-1: actual : actual text/string
 	 * #parameter-2: expected: expected text/string
-	 * #parameter-3: exTest : for extent report
 	 * 
 	 * */
-	public void verify(String actual, String expected, ExtentTest exTest)
+	public void verify(String actual, String expected)
 	{
 		try{
 			Assert.assertEquals(actual, expected);
-			exTest.log(LogStatus.PASS, expected + " Found");
+			test.log(LogStatus.PASS, expected + " Text Found");
 
 		}catch(AssertionError e)
 		{	
-			exTest.log(LogStatus.FAIL, actual + " Not Found");		
+			test.log(LogStatus.FAIL, actual + " Text Not Found");		
 		}
 
 	}
@@ -49,17 +48,16 @@ public class UtilityMethods extends Settings
 	 * #author: rv042687 
 	 * #parameter-1 : status :
 	 * #parameter-2 : stepDesc :
-	 * #parameter-3 : exTest:   for extent report
 	 * */
-	public void verify(Boolean status, String stepDesc, ExtentTest exTest)
+	public void verify(Boolean status, String stepDesc)
 	{
 		try{
 			Assert.assertTrue(status);
-			exTest.log(LogStatus.PASS, stepDesc);
+			test.log(LogStatus.PASS, stepDesc);
 
 		}catch(AssertionError e)
 		{	
-			exTest.log(LogStatus.FAIL, stepDesc);		
+			test.log(LogStatus.FAIL, stepDesc);		
 		}	
 
 	}
@@ -72,16 +70,16 @@ public class UtilityMethods extends Settings
 	 * #parameter-4 : imageName
 	 * #parameter-5 : exTest :  for extent report
 	 * */
-	public void verifyWithScreen(String actual, String expected, String testName, String imageName, ExtentTest exTest)
+	public void verifyWithScreen(String actual, String expected, String testName, String imageName)
 	{
-		try{
-			UtilityMethods.captureScreenshot(driver, testName, imageName, browser);
+		captureScreenshot(driver, testName, imageName, browser);
+		try{	
 			Assert.assertEquals(actual, expected);
-			exTest.log(LogStatus.PASS, test.addScreenCapture(imageName+".png") , expected + " Found");
+			test.log(LogStatus.PASS, test.addScreenCapture(imageName+".png") , expected + " Text Found");
 
 		}catch(AssertionError e)
 		{
-			exTest.log(LogStatus.FAIL, test.addScreenCapture(imageName+".png"), actual + " Not Found");
+			test.log(LogStatus.FAIL, test.addScreenCapture(imageName+".png"), actual + " Text Not Found");
 		}
 
 
@@ -95,16 +93,16 @@ public class UtilityMethods extends Settings
 	 * #parameter-4 : imageName
 	 * #parameter-5 : exTest :  for extent report
 	 * */
-	public void verifyWithScreen(Boolean status, String stepDesc, String testName, String imageName, ExtentTest exTest)
+	public void verifyWithScreen(Boolean status, String stepDesc, String testName, String imageName)
 	{
-		try{
-			UtilityMethods.captureScreenshot(driver, testName, imageName, browser);
+		captureScreenshot(driver, testName, imageName, browser);
+		try{		
 			Assert.assertTrue(status);
-			exTest.log(LogStatus.PASS, test.addScreenCapture(imageName+".png") , stepDesc + " Found");
+			test.log(LogStatus.PASS, test.addScreenCapture(imageName+".png") , stepDesc);
 
 		}catch(AssertionError e)
 		{	
-			exTest.log(LogStatus.FAIL, test.addScreenCapture(imageName+".png"), stepDesc + " Not Found");	
+			test.log(LogStatus.FAIL, test.addScreenCapture(imageName+".png"), stepDesc);	
 		}	
 
 	}

@@ -1,110 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="2" total="2" passed="0">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="PlatformSuite" duration-ms="5105" started-at="2016-12-28T04:29:23Z" finished-at="2016-12-28T04:29:28Z">
+  <suite name="Suite" duration-ms="87768" started-at="2017-01-02T11:09:02Z" finished-at="2017-01-02T11:10:30Z">
     <groups>
     </groups>
-    <test name="FireTest" duration-ms="921" started-at="2016-12-28T04:29:23Z" finished-at="2016-12-28T04:29:24Z">
-      <class name="com.cerner.pctorion.platformTests.ORN_VR_PatientSearch">
-        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.cerner.pctorion.platformTests.ORN_VR_PatientSearch@1ce92674]" name="setup" is-config="true" duration-ms="80" started-at="2016-12-28T09:59:23Z" finished-at="2016-12-28T09:59:23Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Platform]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[firefox]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Dev]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="FAIL" signature="VRPatientSearch()[pri:0, instance:com.cerner.pctorion.platformTests.ORN_VR_PatientSearch@1ce92674]" name="VRPatientSearch" duration-ms="635" started-at="2016-12-28T09:59:23Z" finished-at="2016-12-28T09:59:24Z">
-          <exception class="java.lang.NullPointerException">
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException
-	at com.cerner.pctorion.platformTests.ORN_VR_PatientSearch.VRPatientSearch(ORN_VR_PatientSearch.java:56)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1129)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:746)
-	at org.testng.TestRunner.run(TestRunner.java:600)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1264)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1189)
-	at org.testng.TestNG.runSuites(TestNG.java:1104)
-	at org.testng.TestNG.run(TestNG.java:1076)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- VRPatientSearch -->
-        <test-method status="FAIL" signature="tearDown()[pri:0, instance:com.cerner.pctorion.platformTests.ORN_VR_PatientSearch@1ce92674]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-12-28T09:59:24Z" finished-at="2016-12-28T09:59:24Z">
-          <exception class="java.lang.NullPointerException">
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException
-	at com.cerner.pctorion.utility.Settings.tearDown(Settings.java:47)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:515)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:216)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:143)
-	at org.testng.internal.TestMethodWorker.invokeAfterClassMethods(TestMethodWorker.java:217)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:115)
-	at org.testng.TestRunner.privateRun(TestRunner.java:746)
-	at org.testng.TestRunner.run(TestRunner.java:600)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1264)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1189)
-	at org.testng.TestNG.runSuites(TestNG.java:1104)
-	at org.testng.TestNG.run(TestNG.java:1076)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.cerner.pctorion.platformTests.ORN_VR_PatientSearch -->
-    </test> <!-- FireTest -->
-    <test name="ChromeTest" duration-ms="4173" started-at="2016-12-28T04:29:24Z" finished-at="2016-12-28T04:29:28Z">
-      <class name="com.cerner.pctorion.platformTests.ORN_VR_PatientSearch">
-        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.cerner.pctorion.platformTests.ORN_VR_PatientSearch@3159c4b8]" name="setup" is-config="true" duration-ms="1554" started-at="2016-12-28T09:59:24Z" finished-at="2016-12-28T09:59:25Z">
+    <test name="Orn_Vr_VisitList" duration-ms="87768" started-at="2017-01-02T11:09:02Z" finished-at="2017-01-02T11:10:30Z">
+      <class name="com.cerner.pctorion.chartTests.ORN_VR_VISITLIST">
+        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.cerner.pctorion.chartTests.ORN_VR_VISITLIST@5f2108b5]" name="setup" is-config="true" duration-ms="1331" started-at="2017-01-02T16:39:02Z" finished-at="2017-01-02T16:39:03Z">
           <params>
             <param index="0">
               <value>
@@ -125,48 +28,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="FAIL" signature="VRPatientSearch()[pri:0, instance:com.cerner.pctorion.platformTests.ORN_VR_PatientSearch@3159c4b8]" name="VRPatientSearch" duration-ms="2439" started-at="2016-12-28T09:59:25Z" finished-at="2016-12-28T09:59:28Z">
-          <exception class="org.omg.CORBA.OBJECT_NOT_EXIST">
-            <full-stacktrace>
-              <![CDATA[org.omg.CORBA.OBJECT_NOT_EXIST:   vmcid: 0x0  minor code: 0  completed: No
-	at com.cerner.pctorion.utility.UtilityMethods.clickButton(UtilityMethods.java:286)
-	at com.cerner.pctorion.platformTests.ORN_VR_PatientSearch.VRPatientSearch(ORN_VR_PatientSearch.java:58)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:100)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:811)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1129)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
-	at org.testng.TestRunner.privateRun(TestRunner.java:746)
-	at org.testng.TestRunner.run(TestRunner.java:600)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1264)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1189)
-	at org.testng.TestNG.runSuites(TestNG.java:1104)
-	at org.testng.TestNG.run(TestNG.java:1076)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.omg.CORBA.OBJECT_NOT_EXIST -->
+        <test-method status="PASS" signature="ornVrVisitList()[pri:0, instance:com.cerner.pctorion.chartTests.ORN_VR_VISITLIST@5f2108b5]" name="ornVrVisitList" duration-ms="86134" started-at="2017-01-02T16:39:03Z" finished-at="2017-01-02T16:40:29Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- VRPatientSearch -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.cerner.pctorion.platformTests.ORN_VR_PatientSearch@3159c4b8]" name="tearDown" is-config="true" duration-ms="178" started-at="2016-12-28T09:59:28Z" finished-at="2016-12-28T09:59:28Z">
+        </test-method> <!-- ornVrVisitList -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.cerner.pctorion.chartTests.ORN_VR_VISITLIST@5f2108b5]" name="tearDown" is-config="true" duration-ms="292" started-at="2017-01-02T16:40:29Z" finished-at="2017-01-02T16:40:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.cerner.pctorion.platformTests.ORN_VR_PatientSearch -->
-    </test> <!-- ChromeTest -->
-  </suite> <!-- PlatformSuite -->
+      </class> <!-- com.cerner.pctorion.chartTests.ORN_VR_VISITLIST -->
+    </test> <!-- Orn_Vr_VisitList -->
+  </suite> <!-- Suite -->
 </testng-results>

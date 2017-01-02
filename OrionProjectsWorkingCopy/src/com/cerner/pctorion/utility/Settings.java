@@ -18,28 +18,29 @@ import java.io.File;
 @SuppressWarnings("unused")
 public class Settings 
 {
-	public ExtentReports report;  //needed to end and flush report
-	public ExtentTest test; //needed to flush report
-	public WebDriver driver;
+	public static ExtentReports report;  //needed to end and flush report
+	public static ExtentTest test;       //needed to flush report
+	public static WebDriver driver;
 	public static String projectFolderPath = System.getProperty("user.dir");
 	public static String domain ;
 	public static String component ;
 	public static String browser ;
+	
+	
+	
 	@Parameters({"component","browser","domain"})  //getting browser parameter from .xml test file
-
-
-	@BeforeClass
+	@BeforeTest
 	public void setup (String parmComponent, String parmBrowser, String parmDomain)
 	{	
 		//Domain and Component variables set from parameters in xml file so can be used for folder path or items
 		domain = parmDomain ;
 		component = parmComponent ;
 		browser = parmBrowser ;
-		initializeBrowser(browser);  //takes browser you want to use and loads the driver based on Operating System Platform (Mac OS or Windows OS)
+		initializeBrowser(browser); //takes browser you want to use and loads the driver based on Operating System Platform (Mac OS or Windows OS)
 	}
 
 	
-	@AfterClass
+	@AfterTest
 	public void tearDown() 
 	{
 		report.endTest(test);  
@@ -69,11 +70,11 @@ public class Settings
 	public WebDriver getDriverOSX(String browserName) {  
 		WebDriver driver = null;
 		try {
-			if (browserName.equalsIgnoreCase("firefox") || browserName.equalsIgnoreCase("Firefox")) {
+			if (browserName.equalsIgnoreCase("firefox")) {
 				System.setProperty("webdriver.gecko.driver", projectFolderPath+File.separator+"Resources"+File.separator+"geckodriver");
 				driver = new FirefoxDriver();
-			    Dimension reso = new Dimension(320,600);
-			    driver.manage().window().setSize(reso);
+			     Dimension reso = new Dimension(320,600);
+			    driver.manage().window().maximize();
 			    new WebDriverWait(driver, 5000);
 			}
 			if(browserName.equalsIgnoreCase("chrome")) {

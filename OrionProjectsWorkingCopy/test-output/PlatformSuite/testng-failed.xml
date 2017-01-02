@@ -5,7 +5,7 @@
     <classes>
       <class name="com.cerner.pctorion.chartTests.ORN_VR_VISITLIST">
         <methods>
-          <include name="test"/>
+          <include name="ornVrVisitList"/>
         </methods>
       </class> <!-- com.cerner.pctorion.chartTests.ORN_VR_VISITLIST -->
     </classes>

@@ -27,7 +27,7 @@ public class PatientSearchPage {
 	
 	  //Locate the 'patient search text box'
       @FindBy(id="ion-patient-search-text-box")
-	 public  WebElement PatientSearchTextBox;
+	  public  WebElement PatientSearchTextBox;
 
       //Locate the "x" button
       @FindBy(css="button.icon-dismiss")
@@ -83,6 +83,7 @@ public class PatientSearchPage {
 	  
 	  //Click_Select patient 
 	  public void selectPatient(String selectName, ExtentTest test) throws InterruptedException {
+		  
 		List<WebElement> allPatientElements = driver.findElements(By.cssSelector(".ion-patient-search-result-detail > h5")); 
 		Boolean nameFound = false;
 	      for (WebElement element: allPatientElements) {

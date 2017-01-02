@@ -48,7 +48,7 @@ public class ORN_VR_PatientSearch extends Settings {
 
 	  //Use Extent Reports
 		report = UtilityMethods.Instance(testName,browser) ;
-		ExtentTest test = report.startTest(testName);
+		test = report.startTest(testName);
 	    String imageName = ""; //For Screenshots
 		
 	  //Step 1	

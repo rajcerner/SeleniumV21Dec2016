@@ -4,10 +4,7 @@ package com.cerner.pctorion.chartTests;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-import com.cerner.pctorion.chart.VisitListDetailsPage;
-import com.cerner.pctorion.chart.VisitListDetailsPage.EncounterFields;
 import com.cerner.pctorion.chart.VisitListReviewPage;
-import com.cerner.pctorion.chart.VisitListReviewPage.Encounter;
 import com.cerner.pctorion.platform.EncounterViewPage;
 import com.cerner.pctorion.platform.LandingPage;
 import com.cerner.pctorion.platform.LoginPage;
@@ -15,7 +12,7 @@ import com.cerner.pctorion.platform.PatientSearchPage;
 import com.cerner.pctorion.utility.DataTable;
 import com.cerner.pctorion.utility.Settings;
 import com.cerner.pctorion.utility.UtilityMethods;
-import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 
 public class ORN_VR_VISITLIST extends Settings{
@@ -24,40 +21,51 @@ public class ORN_VR_VISITLIST extends Settings{
 	@Test
 	public void ornVrVisitList() throws InterruptedException
 	{
+		
 		LandingPage lndPage = PageFactory.initElements(driver, LandingPage.class); 
 		LoginPage logPage = PageFactory.initElements(driver, LoginPage.class);     
 		PatientSearchPage patSrch  = PageFactory.initElements(driver, PatientSearchPage.class); 
 		EncounterViewPage encSelc  = PageFactory.initElements(driver, EncounterViewPage.class);
+		VisitListReviewPage vstRev = PageFactory.initElements(driver, VisitListReviewPage.class);
+		
 		UtilityMethods  utm = new UtilityMethods();
-		
-		
-		String testName = "ORN_VR_VISITLIST";
-		String sheet = "chart";
-		DataTable dataTable = new DataTable(testName, sheet);
+		String testName = "ORN_VR_VisitList";
+		String sheet = "Chart";
+		DataTable dataTable = new DataTable(sheet, testName);
+
 		
 		String baseUrl = dataTable.getValue("URL");
-	  	String username = dataTable.getValue("Username");
+	  	String username = dataTable.getValue("UserName");
 	  	String password = dataTable.getValue("Password");
 		String systemDate= UtilityMethods.systemDate();
-		String patName = dataTable.getValue("Patient-A");
+		String patName = dataTable.getValue("PatientA");
+		String fin = dataTable.getValue("FIN");
 		
-		report = UtilityMethods.Instance(testName,browser) ;
-		ExtentTest test = report.startTest(testName);
-	    String imageName = ""; //For Screenshots
+		report = UtilityMethods.Instance(testName, browser) ;
+		test = report.startTest(testName);
+	    String imageName = "Screen=1"; //For Screenshots
 	    
-	    
+		
 	  	driver.get(baseUrl);
+	  
 	  	
 	  	
 	  	utm.clickButton(lndPage.Login,test);
 	  	logPage.enterUsernamePassword(username, password);
 	  	utm.clickButton(logPage.Login,test);  	
-	  	utm.enterText(patSrch.PatientSearchTextBox, "DODDS, BRAIN", test);
-	  	patSrch.selectPatient("DODDS, BRAIN", test);
+	  	utm.enterText(patSrch.PatientSearchTextBox, patName, test);
+	  	patSrch.selectPatient(patName, test);	
+	  
+	  	encSelc.selectEncounter(fin, test);
+	  
 	  	
+
+	    utm.verify(vstRev.vmBtn.getText(), "View More...");
+	  	utm.verify("Roshan", "View More...");
+	  	utm.verifyWithScreen(vstRev.vmBtn.getText(),"View More...", testName, imageName);	
+	  	utm.verifyWithScreen(vstRev.vmBtn.getText(),"View More..", testName, imageName);	
 	  	
-	  	encSelc.selectEncounter("1234567", test);
-	  	
+	 
 		
 		
 	}
