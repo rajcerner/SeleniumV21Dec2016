@@ -4,7 +4,11 @@ package com.cerner.pctorion.chartTests;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
+import com.cerner.pctorion.chart.VisitListDetailsPage;
+import com.cerner.pctorion.chart.VisitListDetailsPage.EncounterFields;
 import com.cerner.pctorion.chart.VisitListReviewPage;
+import com.cerner.pctorion.chart.VisitListReviewPage.EncNo;
+import com.cerner.pctorion.chart.VisitListSplitViewPage;
 import com.cerner.pctorion.platform.EncounterViewPage;
 import com.cerner.pctorion.platform.LandingPage;
 import com.cerner.pctorion.platform.LoginPage;
@@ -26,7 +30,11 @@ public class ORN_VR_VISITLIST extends Settings{
 		LoginPage logPage = PageFactory.initElements(driver, LoginPage.class);     
 		PatientSearchPage patSrch  = PageFactory.initElements(driver, PatientSearchPage.class); 
 		EncounterViewPage encSelc  = PageFactory.initElements(driver, EncounterViewPage.class);
-		VisitListReviewPage vstRev = PageFactory.initElements(driver, VisitListReviewPage.class);
+		
+		VisitListReviewPage vstRev = PageFactory.initElements(driver, VisitListReviewPage.class);		
+		VisitListDetailsPage vstDet = PageFactory.initElements(driver, VisitListDetailsPage.class);
+		VisitListSplitViewPage vstPg = PageFactory.initElements(driver, VisitListSplitViewPage.class);
+		
 		
 		UtilityMethods  utm = new UtilityMethods();
 		String testName = "ORN_VR_VisitList";
@@ -43,85 +51,74 @@ public class ORN_VR_VISITLIST extends Settings{
 		
 		report = UtilityMethods.Instance(testName, browser) ;
 		test = report.startTest(testName);
-	    String imageName = "Screen=1"; //For Screenshots
+	  
 	    
 		
 	  	driver.get(baseUrl);
 	  
 	  	
-	  	
+	  	test.log(LogStatus.INFO, "Step-1",  "User Logins & Loads Patient");
 	  	utm.clickButton(lndPage.Login,test);
 	  	logPage.enterUsernamePassword(username, password);
 	  	utm.clickButton(logPage.Login,test);  	
 	  	utm.enterText(patSrch.PatientSearchTextBox, patName, test);
 	  	patSrch.selectPatient(patName, test);	
-	  
 	  	encSelc.selectEncounter(fin, test);
 	  
 	  	
-
-	    utm.verify(vstRev.vmBtn.getText(), "View More...");
-	  	utm.verify("Roshan", "View More...");
-	  	utm.verifyWithScreen(vstRev.vmBtn.getText(),"View More...", testName, imageName);	
-	  	utm.verifyWithScreen(vstRev.vmBtn.getText(),"View More..", testName, imageName);	
+	  	/*
+	  	 * Step-2
+	  	 * */
+	    String imageName = "Screen_1"; //For Screenshots
+	  	test.log(LogStatus.INFO, "Step-2",  "Visit List Profile Screen");
+	  	utm.verify(vstRev.pageHead.getText(), "");
+	    utm.verify(vstRev.prevHead.getText(), "");
+	    utm.verify(vstRev.futHead.getText(), "");
+	  	utm.verifyWithScreen(vstRev.vmBtn.getText(),"View More...", testName, imageName);		
 	  	
-	 
-		
+	  	
+	  	/*
+	  	 * Step-3
+	  	 */
+	  	imageName = "Screen_2";
+	  	test.log(LogStatus.INFO, "Step-3",  "Encounter Details Page");
+	  	Thread.sleep(50000);
+	  	vstRev.selectPrevious(EncNo.TWO);
+	  	Thread.sleep(50000);
+	  	utm.verifyWithScreen(vstDet.titleTxt.getText(),"", testName, imageName);
+	  	utm.verify(vstDet.verifyEncField(EncounterFields.ADMIT_DATE), "Step-3 Admit Date");
+	  	utm.verify(vstDet.verifyEncField(EncounterFields.ATTENDING_PHY), "Step-3 Attending Phy");
+	  	utm.verify(vstDet.verifyEncField(EncounterFields.DISCHARGE_DATE), "Step-3 Discharge Date");
+	  	utm.verify(vstDet.verifyEncField(EncounterFields.ENC_STATUS), "Step-3 Enc Status");
+	  	utm.verify(vstDet.verifyEncField(EncounterFields.ENC_TYPE), "Step-3 Enc Type");
+	  	utm.verify(vstDet.verifyEncField(EncounterFields.FIN), "Step-3 Fin");
+	  	utm.verify(vstDet.verifyEncField(EncounterFields.LOCATION), "Step-3 Location");
+	  	utm.verify(vstDet.verifyEncField(EncounterFields.REASON_FOR_VISIT), "Step-3 Reason For Visit");
+	  	utm.verify(vstDet.verifyEncField(EncounterFields.ROOM), "Step-3 Room");
+	  	utm.verify(vstDet.verifyEncField(EncounterFields.SERVICE), "Step-3 Service");
+	  	
+	  	
+	  	test.log(LogStatus.INFO, "Step-4",  "Close Details Page");
+	  	vstDet.closeBtn.click();
+	  	
+	  	Thread.sleep(50000);
+	  	test.log(LogStatus.INFO, "Step-5",  "Close Details Page");
+	  	vstRev.vmBtn.click();
+	  	Thread.sleep(50000);
+	  	utm.verify(vstPg.bckBtn.isEnabled(), "Back Button");
+	  	utm.verify(vstPg.sidePnl.isEnabled(), "Side Panel");
+	  	utm.verify(vstPg.prevBtn.isSelected(), "Previous Button Selected by Default");
+	  	utm.verify(vstPg.prevBtn.isSelected(), "Previous Button Selected");
+	  	
+	  	utm.verify(vstPg.prevBtn.getText(), "");
+	  	utm.verify(vstPg.futBtn.getText(), "");
+	  	utm.verify(vstPg.prevHead.getText(), "");
+	  	utm.verify(vstPg.prevHead.getText(), "");
+	  	utm.verify(vstPg.titleTxt.getText(), "");
+	  	
+	  	utm.verify(vstPg.verifyEncData(dataTable.getValue("Enc1_Time")),  " Step Description");		
 		
 	}
-	
-	
-	
-	
-	
-	/*
-	@Test
-	public void test() throws InterruptedException
-	{
-		System.setProperty("webdriver.chrome.driver", "/Users/rv042687/Desktop/rv/browserDrivers/chromedriver");
-		WebDriver driver = new  ChromeDriver();
-
-		//System.setProperty("webdriver.gecko.driver", "/Users/rv042687/Desktop/rv/browserDrivers/geckodriver");
-		//WebDriver driver = new  FirefoxDriver();
-		driver.manage().window().maximize();
-
-		Set<Cookie> allCookies = driver.manage().getCookies();
-		for(Cookie cookie : allCookies)
-		{
-			driver.manage().addCookie(cookie);
-		}
-		driver.get("https://ion-visit-list.test.devcernerpowerchart.com/search/patients");
-
-		ExtentTest test = null;
-		LandingPage lnp = PageFactory.initElements(driver, LandingPage.class); 
-		LoginPage lgp = PageFactory.initElements(driver, LoginPage.class);     
-		PatientSearchPage ps  = PageFactory.initElements(driver, PatientSearchPage.class); 
-		EncounterViewPage ev  = PageFactory.initElements(driver, EncounterViewPage.class);
-		UtilityMethods utilitymethods = new UtilityMethods();
-		VisitListReviewPage vr = PageFactory.initElements(driver,VisitListReviewPage.class );
-		VisitListDetailsPage vd = PageFactory.initElements(driver,VisitListDetailsPage.class);
-
-
-
-		lnp.clickLoginButton();
-		lgp.enterUsernamePassword("jw027642", "asdf");
-		utilitymethods.clickOnAnyButton(lgp.Login, test);
-		utilitymethods.enterDataInAnyField(ps.PatientSearchTextBox,"DODDS, BRIAN", test);
-		ps.selectPatient("DODDS, BRIAN", test);
-		ev.selectEncounter("1234567", test);
-		//obj.selectFuture(Encounter.ONE);
-	//	vr.selectPrevious(Encounter.THREE);
-		Boolean status = vr.verifyPrevEncRows("Recurring");
-		utilitymethods.verify(false, "data", test);
-		utilitymethods.verify(status, "data", test);
-		
-		
-		//System.out.println("value = " + status);
-			
-		//driver.close();
-		driver.quit();
-	}
-*/
 
 
 }

@@ -26,14 +26,15 @@ public class VisitListDetailsPage {
 	@FindBy(how = How.CSS, using = "div.terraVM-TitleValueCard-titleText")
 	public List<WebElement> encDetailFields;
 
+	Boolean status = false;
 	public Boolean verifyEncField(EncounterFields encounterFields)
 	{
-		Boolean status = false;
+	
 		for(WebElement fields : encDetailFields)
 		{
 			if( fields.getText().equals(getVstLstFieldsData(encounterFields)))
 			{
-				return status=true;
+				return true;
 			}		
 		}
 		return status;
@@ -72,35 +73,35 @@ public class VisitListDetailsPage {
 				break;
 			case REASON_FOR_VISIT:
 				reasonForVisit = "Reason for Visit";
-				value="reasonForVisit";
+				value=reasonForVisit;
 				break;
 			case SERVICE:
 				service = "Service";
-				value="service";
+				value=service;
 				break;
 			case ATTENDING_PHY:
 				attendingPhy = "Attending";
-				value="attendingPhy";
+				value=attendingPhy;
 				break;
 			case LOCATION:
 				location = "Location";
-				value="location";
+				value=location;
 				break;
 			case ROOM:
 				room = "Room/Bed";
-				value="room";
+				value=room;
 				break;
 			case FIN:
 				fin = "FIN";
-				value="fin";
+				value=fin;
 				break;
 			case ENC_TYPE:
 				encType = "Type";
-				value="encType";
+				value=encType;
 				break;
 			case ENC_STATUS:
-				encStatus = "Active";	
-				value="encStatus";
+				encStatus = "Status";	
+				value=encStatus;
 				break;
 			}
 

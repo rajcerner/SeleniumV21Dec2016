@@ -2,9 +2,15 @@ package com.cerner.pctorion.chart;
 
 
 import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /*
  * @uthor: rv042687 / roshanv
@@ -13,17 +19,12 @@ import org.openqa.selenium.support.How;
 
 public class VisitListReviewPage {
 
-/*
-	VisitListReviewPage(WebDriver driver)
-	{
-		String headerTxt = driver.findElement(By.cssSelector("div.terraVM-ContentPanel--header > header > h1")).getText();
+	//WebElement pageElement = (new WebDriverWait(driver, 10))
+      //      .until(ExpectedConditions.presenceOfElementLocated(By.id("#ion-visit-l
 
-		if(!headerTxt.equals("Visit List"))
-			throw new IllegalStateException("This is not Visit List Page of logged in user, current page" +
-					"is: " + driver.getCurrentUrl());
-
-	}*/
-
+	@FindBy(how = How.CSS, using=".terraVM-ContentPanel--header > header > h1")
+	public WebElement pageHead;
+	
 	//previous header label
 	@FindBy(how = How.CSS, using="#ion-visit-list-previous-header")
 	public WebElement prevHead;
@@ -45,10 +46,10 @@ public class VisitListReviewPage {
 	public List<WebElement> futRowBtn;
 	
 	//Constant values to identify encounters on profile/review screen 
-	public enum Encounter{ONE, TWO, THREE};
+	public enum EncNo{ONE, TWO, THREE};
 
 	//method to select previous encounters
-	public void selectPrevious(Encounter encNo)
+	public void selectPrevious(EncNo encNo)
 	{
 		switch(encNo)
 		{
@@ -60,13 +61,13 @@ public class VisitListReviewPage {
 	}
 
 	//method to select future encounters
-	public void selectFuture(Encounter encNo)
+	public void selectFuture(EncNo encNo)
 	{
 		switch(encNo)
 		{
-		case ONE:    futRowBtn.get(0).click();   break; // Encounter 1
+		case ONE:    futRowBtn.get(2).click();   break; // Encounter 1
 		case TWO:    futRowBtn.get(1).click();   break; // Encounter 2
-		case THREE:	 futRowBtn.get(2).click();   break; // Encounter 3
+		case THREE:	 futRowBtn.get(0).click();   break; // Encounter 3
 		}
 
 	}	

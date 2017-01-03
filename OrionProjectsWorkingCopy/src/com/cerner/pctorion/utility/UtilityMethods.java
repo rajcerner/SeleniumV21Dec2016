@@ -68,7 +68,6 @@ public class UtilityMethods extends Settings
 	 * #parameter-2 : expected
 	 * #parameter-3 : testName
 	 * #parameter-4 : imageName
-	 * #parameter-5 : exTest :  for extent report
 	 * */
 	public void verifyWithScreen(String actual, String expected, String testName, String imageName)
 	{
@@ -91,7 +90,6 @@ public class UtilityMethods extends Settings
 	 * #parameter-2 : stepDesc
 	 * #parameter-3 : testName
 	 * #parameter-4 : imageName
-	 * #parameter-5 : exTest :  for extent report
 	 * */
 	public void verifyWithScreen(Boolean status, String stepDesc, String testName, String imageName)
 	{
