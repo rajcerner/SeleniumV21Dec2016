@@ -14,6 +14,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("unused")
 public class Settings 
@@ -81,7 +82,8 @@ public class Settings
 				System.setProperty("webdriver.chrome.driver", projectFolderPath+File.separator+"Resources"+File.separator+"chromedriver");
 				driver=new ChromeDriver();
 			    driver.manage().window().maximize();
-			    new WebDriverWait(driver, 5000);
+			    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			    //new WebDriverWait(driver, 5000);
 			}
 			if(browserName.equalsIgnoreCase("iexplore32") || browserName.equalsIgnoreCase("ie32")){
 				System.setProperty("webdriver.ie.driver", projectFolderPath+File.separator+"Resources"+File.separator+"IE32DriverServer");

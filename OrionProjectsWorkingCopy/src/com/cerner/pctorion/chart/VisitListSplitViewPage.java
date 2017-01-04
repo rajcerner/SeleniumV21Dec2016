@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.How;
 
 /*
@@ -32,8 +33,6 @@ public class VisitListSplitViewPage {
 	@FindBy(how= How.CSS, using ="#ion-visit-list-future-header")
 	public WebElement futHead;
 
-
-
 	//back button on action tool bar
 	@FindBy(how = How.CSS, using ="div.terraVM-ActionToolbar-leftButtons > button")
 	public WebElement bckBtn;
@@ -43,8 +42,9 @@ public class VisitListSplitViewPage {
 	public WebElement titleTxt;
 
 	//encounter Row Buttons for both previous & future encounters
-	@FindBy(how = How.CSS, using = "div.terraVM-CompactCard-text")
+	@FindBy(how = How.CSS, using ="div.terraVM-CompactCard-text")
 	public List<WebElement> vistLstRowsBtn;
+	
 
 
 	//method to select visit list row based on encounter reason
@@ -53,7 +53,7 @@ public class VisitListSplitViewPage {
 		for(WebElement encRow: vistLstRowsBtn)
 		{
 			if(encRow.getText().equals(encReason) )
-				encRow.click();
+				encRow.click(); System.out.println("Meowww 1");
 		}
 	}
 

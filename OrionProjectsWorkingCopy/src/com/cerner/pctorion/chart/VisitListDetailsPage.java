@@ -14,7 +14,7 @@ import org.openqa.selenium.support.How;
  * */
 
 
-public class VisitListDetailsPage {
+public class VisitListDetailsPage{
 
 
 	@FindBy(how = How.CSS, using="div.terraVM-ActionToolbar-rightButtons > button")
@@ -40,23 +40,16 @@ public class VisitListDetailsPage {
 		return status;
 	}
 	
-	/***************************************************************************************/
 	//Actual Data Strings
 
-		String admitDate;
-		String dischargeDate;
-		String reasonForVisit;
-		String service;
-		String attendingPhy;
-		String location;
-		String room;
-		String fin;
-		String encType;
-		String encStatus;
+		String admitDate;    String dischargeDate; String reasonForVisit; String service;
+		String attendingPhy; String location;      String room;           String fin;
+		String encType;      String encStatus;
 
 		public enum EncounterFields
 		{ADMIT_DATE, DISCHARGE_DATE, REASON_FOR_VISIT, SERVICE, ATTENDING_PHY, LOCATION, ROOM, FIN, ENC_TYPE, ENC_STATUS};
 
+		
 		String getVstLstFieldsData(EncounterFields data)
 		{
 			String value=null;
@@ -107,6 +100,5 @@ public class VisitListDetailsPage {
 
 			return value;
 		}
-
 
 }

@@ -45,6 +45,12 @@ public class VisitListReviewPage {
 	@FindBy (how = How.XPATH, using="//h1[contains(text(), 'Previous')]/preceding::li[@class='terraVM-u-chevron']/div")
 	public List<WebElement> futRowBtn;
 	
+	@FindBy (how = How.XPATH, using="//p[contains(text(), 'No future visits for this patient')]")
+	public WebElement noFutTxt;
+	
+	@FindBy (how = How.XPATH, using="//p[contains(text(), 'No previous visits for this patient')]")
+	public WebElement noPrevTxt;
+	
 	//Constant values to identify encounters on profile/review screen 
 	public enum EncNo{ONE, TWO, THREE};
 
